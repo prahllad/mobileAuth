@@ -1,9 +1,9 @@
 'use strict';
 const app = require('./app');
-const https = require('https');
+const http = require('http');
 const fs = require('fs');
 const port = process.env.PORT || 3002;
-https.createServer( app).listen(port, () => {
+http.createServer( app).listen(port, () => {
     console.log('Listening...')
   });
   console.log('Express backend server started in ' + app.get('env') + ' mode on port ' + port);
