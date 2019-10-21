@@ -24,17 +24,17 @@ const retryStrategy = function (options) {
     return Math.min(options.attempt * 100, 3000);
 };
 
-const redisUrl = process.env.REDIS_URL || '';
-let client = redis.createClient(redisUrl, { retry_strategy: retryStrategy });
-const bluebird = require('bluebird');
+// const redisUrl = process.env.REDIS_URL || '';
+// let client = redis.createClient(redisUrl, { retry_strategy: retryStrategy });
+// const bluebird = require('bluebird');
 
-bluebird.promisifyAll(redis.RedisClient.prototype);
-bluebird.promisifyAll(redis.Multi.prototype);
+// bluebird.promisifyAll(redis.RedisClient.prototype);
+// bluebird.promisifyAll(redis.Multi.prototype);
 
-client.on('error', err => console.log('Redis error ' + err));
+// client.on('error', err => console.log('Redis error ' + err));
 
-client.on('connect', () => console.log('connected to redis'));
+// client.on('connect', () => console.log('connected to redis'));
 
-client.on('reconnecting', () => console.log('reconnecting to redis'));
+// client.on('reconnecting', () => console.log('reconnecting to redis'));
 
 module.exports = client;
