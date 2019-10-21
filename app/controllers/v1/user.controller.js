@@ -129,7 +129,7 @@ module.exports = {
                 let sms = await smsService.verifyCode(req.body);
                 if (sms.status == "approved" && sms.valid == true) {
                     user = await userHelper.getUserByPhone(req.body);
-                    await (new sessionService().createSession(user.email, req.body.userAgent));
+//                     await (new sessionService().createSession(user.email, req.body.userAgent));
 
                     return response.success(res, constants.success.OK, {user: user, token: jwtHelper.createToken(user) });
 
